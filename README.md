@@ -32,11 +32,11 @@ java -cp bin siga.Main
 
 ## As três violações propositais
 
-| Arquivo | Princípio violado | O que está errado |
-|---|---|---|
-| `RelatorioAluno.java` | **SRP** (Responsabilidade Única) | A classe formata, grava em disco e envia e-mail — três motivos para mudar. |
-| `Matricula.java` | **OCP** (Aberto/Fechado) | `calcularMensalidade` usa condicionais por tipo de desconto que crescem a cada novo tipo. |
-| `Matricula.java` | **DIP** (Inversão de Dependência) | Depende diretamente da classe concreta `GravadorMySQL` (instanciada com `new`). |
+| Arquivo               | Princípio violado                 | O que está errado                                                                         |
+| --------------------- | --------------------------------- | ----------------------------------------------------------------------------------------- |
+| `RelatorioAluno.java` | **SRP** (Responsabilidade Única)  | A classe formata, grava em disco e envia e-mail — três motivos para mudar.                |
+| `Matricula.java`      | **OCP** (Aberto/Fechado)          | `calcularMensalidade` usa condicionais por tipo de desconto que crescem a cada novo tipo. |
+| `Matricula.java`      | **DIP** (Inversão de Dependência) | Depende diretamente da classe concreta `GravadorMySQL` (instanciada com `new`).           |
 
 ## Sua tarefa
 
@@ -46,7 +46,7 @@ Siga as etapas da ficha de atividade prática. Em resumo:
 2. **Separar** cada responsabilidade em sua própria classe (por exemplo: `RelatorioFormatador`, `RelatorioRepositorio`, `ServicoEmail`), cada uma com um único motivo para mudar.
 3. **Substituir** o bloco condicional de `calcularMensalidade` por polimorfismo: crie uma interface `Desconto` com um método `aplicar(double valor)` e uma classe para cada tipo (`DescontoBolsista`, `DescontoConvenio`, `DescontoFuncionario`, `SemDesconto`). Assim, um novo desconto passa a ser uma nova classe, sem modificar `Matricula` (OCP).
 4. **Inverter** a dependência: crie uma interface (por exemplo, `MatriculaRepositorio`) que `GravadorMySQL` implemente, e faça `Matricula` depender da interface — recebendo-a pelo construtor — em vez de instanciar a classe concreta (DIP).
-5. **Listar**, no README da sua entrega, os *code smells* que você encontrou no código original.
+5. **Listar**, no README da sua entrega, os _code smells_ que você encontrou no código original.
 
 ## Critério de sucesso
 
