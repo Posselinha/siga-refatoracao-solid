@@ -24,6 +24,7 @@ public class Main {
         // PROBLEMA 1 (SRP): uma única classe formata, grava E envia o relatório.
         RelatorioFormatador relatorioFormatador = new RelatorioFormatador();
         RelatorioRepositorio relatorioRepositorio = new RelatorioRepositorio();
+        GravadorMySQL gravador = new GravadorMySQL();
         ServicoEmail servicoEmail = new ServicoEmail();
         String conteudo = relatorioFormatador.formatar(alunos);
         relatorioRepositorio.salvarEmArquivo(conteudo, "relatorios/alunos.txt");
@@ -32,8 +33,8 @@ public class Main {
         System.out.println();
 
         // PROBLEMA 2 (OCP): o cálculo usa condicionais que crescem a cada desconto.
-        Matricula m1 = new Matricula(alunos.get(0), 1000.0, "BOLSISTA");
-        Matricula m2 = new Matricula(alunos.get(1), 1000.0, "NENHUM");
+        Matricula m1 = new Matricula(alunos.get(0), 1000.0, "BOLSISTA", gravador);
+        Matricula m2 = new Matricula(alunos.get(1), 1000.0, "NENHUM", gravador);
         System.out.println("Mensalidade (bolsista): " + m1.calcularMensalidade());
         System.out.println("Mensalidade (sem desconto): " + m2.calcularMensalidade());
 
