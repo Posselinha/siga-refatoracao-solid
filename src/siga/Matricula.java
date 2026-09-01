@@ -28,11 +28,12 @@ public class Matricula {
     private DescontoConvenio descConvenio;
     private DescontoFuncionario descFuncionario;
     private SemDesconto semDesconto;
+    private MatriculaRepositorio repositorio;
 
     // Violação do DIP: dependência direta da classe concreta.
     private GravadorMySQL gravador = new GravadorMySQL();
 
-    public Matricula(Aluno aluno, double valorBase, String tipoDesconto) {
+    public Matricula(Aluno aluno, double valorBase, String tipoDesconto, MatriculaRepositorio repositorio) {
         this.aluno = aluno;
         this.valorBase = valorBase;
         this.tipoDesconto = tipoDesconto;
@@ -40,6 +41,7 @@ public class Matricula {
         this.descConvenio = new DescontoConvenio();
         this.descFuncionario = new DescontoFuncionario();
         this.semDesconto = new SemDesconto();
+        this.repositorio = repositorio;
     }
 
     // Violação do OCP: um novo desconto = mais um ramo condicional aqui.
