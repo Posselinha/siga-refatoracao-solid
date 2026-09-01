@@ -7,8 +7,8 @@ import java.util.List;
  * Ponto de entrada do SIGA (código INICIAL da atividade da Aula 3).
  *
  * Esta classe demonstra, em execução, os três problemas de design que você
- * deverá corrigir aplicando os princípios SOLID. Rode o programa e observe:
- * ele FUNCIONA — mas o código não resiste bem à mudança, como discutido em aula.
+ * deverá corrigir aplicando os princípios SOLID. Rode o programa e observe: ele
+ * FUNCIONA — mas o código não resiste bem à mudança, como discutido em aula.
  */
 public class Main {
 
@@ -16,16 +16,18 @@ public class Main {
         System.out.println("=== SIGA - Atividade de Refatoração SOLID (código inicial) ===\n");
 
         List<Aluno> alunos = Arrays.asList(
-            new Aluno("Maria Silva", "2026001", "maria@exemplo.edu", 8.5, true),
-            new Aluno("João Souza",  "2026002", "joao@exemplo.edu",  6.0, false),
-            new Aluno("Ana Pereira", "2026003", "ana@exemplo.edu",   9.2, false)
+                new Aluno("Maria Silva", "2026001", "maria@exemplo.edu", 8.5, true),
+                new Aluno("João Souza", "2026002", "joao@exemplo.edu", 6.0, false),
+                new Aluno("Ana Pereira", "2026003", "ana@exemplo.edu", 9.2, false)
         );
 
         // PROBLEMA 1 (SRP): uma única classe formata, grava E envia o relatório.
-        RelatorioAluno relatorio = new RelatorioAluno();
-        String conteudo = relatorio.formatar(alunos);
-        relatorio.salvarEmArquivo(conteudo, "relatorios/alunos.txt");
-        relatorio.enviarPorEmail(conteudo, "coordenacao@exemplo.edu");
+        RelatorioFormatador relatorioFormatador = new RelatorioFormatador();
+        RelatorioRepositorio relatorioRepositorio = new RelatorioRepositorio();
+        ServicoEmail servicoEmail = new ServicoEmail();
+        String conteudo = relatorioFormatador.formatar(alunos);
+        relatorioRepositorio.salvarEmArquivo(conteudo, "relatorios/alunos.txt");
+        servicoEmail.enviarPorEmail(conteudo, "coordenacao@exemplo.edu");
 
         System.out.println();
 
