@@ -11,3 +11,9 @@ R - Foi encontrado de que a classe `RelatorioAluno` possui atualmente três resp
 3. Enviar Relátorio por E-mail
 
 Essas responsabilidades estão violando o SRP do SOLID ao misturar várias responsabilidades dentro de uma única classe.
+
+5. **Listar**, no README da sua entrega, os _code smells_ que você encontrou no código original.
+
+R - Os code smells encontrados foram varias responsabilidades na classe de Relatorio e Matricula (Matricula estava definindo o valor dos descontos).
+
+Main estava utilizando apenas a classe de relatorioAluno diante das varias responsabilidades que ela tinha.
